@@ -1,3 +1,7 @@
+
+export const ADD_TODO = "ADD_TODO"
+
+
 export const initialState = [{
     item: 'Learn about reducers',
     completed: false,
@@ -14,7 +18,11 @@ export const initialState = [{
   }]
 
   export const todoReducer = (state, action) => {
+    switch (action.type) {
+      case ADD_TODO:
+        return [...state, {item: action.payload, completed:false, id: new Date() }]
+        default: 
+          return state;
     
-        return state; // do nothing, just return previous state unchanged
-    
+      }
   };
