@@ -1,5 +1,6 @@
 
-export const ADD_TODO = "ADD_TODO"
+export const ADD_TODO = "ADD_TODO";
+export const MARK_COMPLETE = "MARK_COMPLETE";
 
 
 export const initialState = [{
@@ -8,7 +9,7 @@ export const initialState = [{
     id: 1892987589
   }, {
     item: 'Cloud watch',
-    completed: false,
+    completed: true,
     id: 2892987589
   }, 
   {
@@ -21,6 +22,16 @@ export const initialState = [{
     switch (action.type) {
       case ADD_TODO:
         return [...state, {item: action.payload, completed:false, id: new Date() }]
+
+      case MARK_COMPLETE:
+        return state.map((todo) => {
+          if(action.payload === todo.id) {
+           return {...todo, completed: !todo.completed};
+          }
+          else {
+            return todo;
+          }
+        }) 
         default: 
           return state;
     
