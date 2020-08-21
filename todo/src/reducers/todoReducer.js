@@ -1,6 +1,7 @@
 
 export const ADD_TODO = "ADD_TODO";
 export const MARK_COMPLETE = "MARK_COMPLETE";
+export const CLEAR_COMPLETED = "CLEAR_COMPLETED"
 
 
 export const initialState = [{
@@ -32,6 +33,10 @@ export const initialState = [{
             return todo;
           }
         }) 
+        case CLEAR_COMPLETED:
+          return state.filter( todo => {
+            return !todo.completed;
+          })
         default: 
           return state;
     

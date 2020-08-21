@@ -2,7 +2,7 @@ import React from "react";
 import { MARK_COMPLETE} from "../reducers/todoReducer";
 
 const ToDo = (props) => {
-    console.log("Todo props", props);
+    // console.log("Todo props", props);
 
   const toggleComplete = () => {
     console.log("complete toggled");

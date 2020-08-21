@@ -2,7 +2,7 @@ import React, {useState, useReducer} from 'react';
 import './App.css';
 import ToDoList from "./components/TodoList.js";
 import "./styles.css";
-import {todoReducer, initialState, ADD_TODO,  MARK_COMPLETE} from "./reducers/todoReducer";
+import {todoReducer, initialState, ADD_TODO,  CLEAR_COMPLETED} from "./reducers/todoReducer";
 
 function App() {
   const [newTodo, setNewTodo] = useState("");
@@ -11,6 +11,11 @@ function App() {
     const handleChange = (e) => {
       setNewTodo(e.target.value);
     }
+
+    const clearCompleted = () => {
+      dispatch({type: CLEAR_COMPLETED});
+    }
+
   return (
     <div className="App">
       <p>Todo List</p>
@@ -29,6 +34,8 @@ function App() {
           dispatch({type: ADD_TODO, payload: newTodo});
          }}
         >Submit</button>
+        <br/>
+        <button onClick={clearCompleted}>Clear Completed</button>
       </div>
     </div>
   );
